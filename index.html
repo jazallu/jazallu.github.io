@@ -422,83 +422,54 @@
             background: linear-gradient(135deg, var(--dark), var(--dark-gray));
         }
         
+        /* Improved How It Works section */
         .steps-container {
-            position: relative;
-            padding-top: 40px;
-        }
-        
-        .step-line {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            width: 4px;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
-            transform: translateX(-50%);
-        }
-        
-        .step {
             display: flex;
-            align-items: center;
-            margin-bottom: 100px;
-            position: relative;
+            flex-direction: column;
+            gap: 40px;
+            margin: 0 auto;
+            max-width: 900px;
         }
         
-        .step:last-child {
-            margin-bottom: 0;
-        }
-        
-        .step-left {
-            justify-content: flex-end;
-        }
-        
-        .step-right {
-            flex-direction: row-reverse;
-        }
-        
-        .step-content {
-            width: 45%;
-            padding: 30px;
+        .step-card {
             background: var(--medium-gray);
-            border-radius: 8px;
-            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
             transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
         
-        .step-content:hover {
+        .step-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .step-number {
-            position: absolute;
-            width: 60px;
-            height: 60px;
-            top: 50%;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            border-radius: 50%;
-            color: white;
-            font-size: 24px;
-            font-weight: 700;
+        .step-number-container {
+            width: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 1;
-            transform: translateY(-50%);
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            position: relative;
         }
         
-        .step-left .step-number {
-            right: -30px;
+        .step-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
         }
         
-        .step-right .step-number {
-            left: -30px;
+        .step-content {
+            padding: 30px;
+            flex: 1;
         }
         
         .step-content h3 {
             font-size: 24px;
             font-weight: 600;
             margin-bottom: 16px;
+            color: white;
         }
         
         .step-content p {
@@ -799,6 +770,14 @@
             color: var(--primary);
         }
         
+        /* Fixed bottom overflow issue */
+        .feature-row {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        
         /* Animations */
         @keyframes fadeUp {
             from {
@@ -903,25 +882,13 @@
                 grid-template-columns: 1fr;
             }
             
-            .step {
+            .step-card {
                 flex-direction: column;
-                margin-bottom: 60px;
             }
             
-            .step-content {
+            .step-number-container {
                 width: 100%;
-                order: 2;
-            }
-            
-            .step-number {
-                position: static;
-                margin: 0 auto 20px;
-                transform: none;
-                order: 1;
-            }
-            
-            .step-line {
-                display: none;
+                padding: 20px 0;
             }
             
             .footer-container {
@@ -1039,258 +1006,28 @@
                 <p>Our intuitive interface makes the entire experience fun and engaging – it's like a game where everybody wins!</p>
                 
                 <div class="feature-list">
-                    <div class="feature-item">
-                        <i>✓</i>
-                        <span>College-based matching</span>
+                    <div class="feature-row">
+                        <div class="feature-item">
+                            <i>✓</i>
+                            <span>College-based matching</span>
+                        </div>
+                        <div class="feature-item">
+                            <i>✓</i>
+                            <span>Customizable user profiles</span>
+                        </div>
                     </div>
-                    <div class="feature-item">
-                        <i>✓</i>
-                        <span>Customizable user profiles</span>
+                    <div class="feature-row">
+                        <div class="feature-item">
+                            <i>✓</i>
+                            <span>Personalized matching algorithm</span>
+                        </div>
+                        <div class="feature-item">
+                            <i>✓</i>
+                            <span>Interest-based connections</span>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="preview-image hidden">
-                <img src="/api/placeholder/450/900" alt="GIRL App Screenshot" class="device-mockup">
-            </div>
-        </div>
-    </section>
-
-    <section id="how-it-works" class="how-it-works">
-        <div class="container">
-            <div class="section-header hidden">
-                <h2>How GIRL Works</h2>
-                <p>Finding your new circle of friends is simple and intuitive with GIRL</p>
-            </div>
-            
-            <div class="steps-container">
-                <div class="step-line"></div>
-                
-                <div class="step step-left hidden">
-                    <div class="step-content">
-                        <h3>Select Your College</h3>
-                        <p>Sign up and select your college or university. This helps us connect you with other students at your school looking for friends or roommates.</p>
-                    </div>
-                    <div class="step-number">1</div>
-                </div>
-                
-                <div class="step step-right hidden">
-                    <div class="step-content">
-                        <h3>Create Your Profile</h3>
-                        <p>Create your profile showcasing your personality, interests, and what you're looking for in friends or roommates. Add photos that express who you are.</p>
-                    </div>
-                    <div class="step-number">2</div>
-                </div>
-                
-                <div class="step step-left hidden">
-                    <div class="step-content">
-                        <h3>Discover Matches</h3>
-                        <p>Browse through potential friends and roommates at your college. Our algorithm suggests matches based on compatibility and shared interests.</p>
-                    </div>
-                    <div class="step-number">3</div>
-                </div>
-                
-                <div class="step step-right hidden">
-                    <div class="step-content">
-                        <h3>Swipe & Match</h3>
-                        <p>Swipe right on profiles you like. When someone you've swiped right on also swipes right on your profile, it's a match! Now you can start chatting.</p>
-                    </div>
-                    <div class="step-number">4</div>
-                </div>
-                
-                <div class="step step-left hidden">
-                    <div class="step-content">
-                        <h3>Connect & Meet Up</h3>
-                        <p>Chat with your matches through our secure messaging system. When you feel comfortable, arrange to meet up on campus or a nearby spot to begin your friendship.</p>
-                    </div>
-                    <div class="step-number">5</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="founder" class="founder">
-        <div class="container founder-container">
-            <div class="founder-image hidden">
-                <img src="/api/placeholder/400/400" alt="Jasmitha Allu - Founder of GIRL">
-            </div>
-            <div class="founder-bio hidden">
-                <h2>Meet the Founder</h2>
-                <h3>Jasmitha Allu</h3>
-                <p>Jasmitha is a driven high school student from Minneapolis, Minnesota with a passion for technology, cybersecurity, and creating innovative solutions. As a member of Business Professionals of America and a varsity tennis athlete, she brings dedication and passion to everything she does.</p>
-                <p>Building GIRL from the ground up, Jasmitha designed the user experience, developed key features, and ensured everything runs smoothly with Firebase and Apple Developer tools. Her vision is to create a safe space for girls to connect, find friends, and build meaningful relationships.</p>
-                <p>Jasmitha is an award-winning young technologist, recognized in the Minnesota Aspirations in Computing Awards. She plans to pursue a degree in Cybersecurity with a minor in Business.</p>
-                
-                <div class="social-links">
-                    <a href="https://linkedin.com/in/jasmitha-allu" class="social-link" target="_blank">in</a>
-                    <a href="#" class="social-link">📧</a>
-                    <a href="#" class="social-link">📱</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="download" class="download">
-        <div class="container download-container">
-            <h2 class="hidden">Coming Soon to App Store</h2>
-            <p class="hidden">The GIRL app is currently awaiting App Store approval. Be the first to know when it launches!</p>
-            
-            <div class="store-buttons hidden">
-                <a href="#" class="store-btn">
-                    <i>🍎</i>
-                    <div class="btn-text">
-                        <small>Coming soon on the</small>
-                        <span>App Store</span>
-                    </div>
-                </a>
-                <a href="#coming-soon" class="store-btn">
-                    <i>🔔</i>
-                    <div class="btn-text">
-                        <small>Get notified</small>
-                        <span>Join Waitlist</span>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section id="coming-soon" class="coming-soon">
-        <div class="container">
-            <div class="section-header hidden">
-                <h2>Join Our Waitlist</h2>
-                <p>Be the first to know when GIRL launches. Enter your email to get early access and exclusive updates.</p>
-            </div>
-            
-            <form class="waitlist-form hidden">
-                <input type="email" placeholder="Your email address" class="waitlist-input" required>
-                <button type="submit" class="waitlist-button">Get Early Access</button>
-            </form>
-            
-            <p class="text-center mt-40 hidden">We're getting ready to launch soon. We'll never spam you or share your email.</p>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-column">
-                    <a href="#" class="footer-logo">GIRL</a>
-                    <p class="footer-text">A swipe-based social app designed to help girls find friends, roommates, and connections in a safe and fun way.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Navigation</h4>
-                    <ul class="footer-links">
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#how-it-works">How It Works</a></li>
-                        <li><a href="#founder">Founder</a></li>
-                        <li><a href="#download">Download</a></li>
-                        <li><a href="#coming-soon">Join Waitlist</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Legal</h4>
-                    <ul class="footer-links">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Community Guidelines</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h4>Contact</h4>
-                    <ul class="footer-links">
-                        <li><a href="mailto:contact@girlapp.com">contact@girlapp.com</a></li>
-                        <li><a href="https://linkedin.com/in/jasmitha-allu">LinkedIn</a></li>
-                        <li><a href="https://instagram.com">Instagram</a></li>
-                        <li><a href="https://tiktok.com">TikTok</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p class="copyright">© 2025 GIRLOFFICIAL. All rights reserved.</p>
-                <div class="bottom-links">
-                    <a href="#">Privacy</a>
-                    <a href="#">Terms</a>
-                    <a href="#">Cookies</a>
-                    <a href="#">Contact</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Wait for DOM to be fully loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mobile Menu Toggle
-            const mobileMenuButton = document.querySelector('.mobile-menu-button');
-            const navLinks = document.querySelector('.nav-links');
-            
-            if(mobileMenuButton) {
-                mobileMenuButton.addEventListener('click', function() {
-                    navLinks.classList.toggle('active');
-                });
-            }
-            
-            // Smooth scrolling for all anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    if(targetId === '#') return; // Skip if href is just "#"
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
-                        // Close mobile menu if open
-                        if(navLinks.classList.contains('active')) {
-                            navLinks.classList.remove('active');
-                        }
-                        
-                        // Scroll to the element with offset for the fixed header
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Header background change on scroll
-            const header = document.getElementById('header');
-            window.addEventListener('scroll', function() {
-                if (window.scrollY > 100) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-            
-            // Intersection Observer for scroll animations
-            const hiddenElements = document.querySelectorAll('.hidden');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            hiddenElements.forEach((el) => observer.observe(el));
-        });
-    </script>
-</body>
-</html>
-                        <i>✓</i>
-                        <span>Personalized matching algorithm</span>
-                    </div>
-                    <div class="feature-item">
-                        <i>✓</i>
-                        <span>Interest-based connections</span>
-                    </div>
-                    <div class="feature-item">
-                        <i>✓</i>
-                        <span>In-app messaging</span>
-                    </div>
-                    <div class="feature-item">
+                    <div class="feature-row">
+                        <div class="feature-item">
+                            <i>✓</i>
+                            <span>In-app messaging</span>
+                        </div>
